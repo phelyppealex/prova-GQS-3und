@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Producao import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('criar-coleta/', views.criar_coleta, name='criar-coleta')
 ]

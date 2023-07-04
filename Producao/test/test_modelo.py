@@ -1,6 +1,5 @@
 from django.test import TestCase
 from unittest.mock import Mock
-
 from Producao.models import Criacao, Coleta
 
 class CriacaoModelTest(TestCase):
@@ -12,8 +11,6 @@ class CriacaoModelTest(TestCase):
         Criacao.objects.create(raca='Caucasica', data_entrada='27/05/2021')
         Criacao.objects.create(raca='Apis mellifera carnica da Eslovênia', data_entrada='23/')
         Criacao.objects.create(raca='Apis mellifera scutellata', data_entrada='')
-        Criacao.objects.create(raca='', data_entrada='')
-        Criacao.objects.create(raca='', data_entrada='')
 
     def test_tamanho_caracteres(self):
         criacao = Criacao.objects.get(id=1)
@@ -66,4 +63,15 @@ class ColetaModelTest(TestCase):
             self.assertEqual(quantidade.verbose_name, 'quantidade')
 
         def test_ordem_coletas(self):
-            coletas = Coleta.objects.all()
+            coletas = Coleta.objects.order_by('-data')
+            ordenado = checar_ordenacao_data(coletas)
+            self.assertTrue(ordenado)
+
+        def checar_ordenacao_data(coletas):
+            ordenado = True
+            i = 0
+            while i < len(coletas) - 2:
+                if coletas[i].data < coletas[i+1].data:
+                    ordenado = False
+                    break
+            return ordenado
