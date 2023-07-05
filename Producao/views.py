@@ -51,7 +51,7 @@ class ListarColetas(ListView):
     template_name = 'Producao/listar_coletas.html'
 
 def detalhar_coleta(request, pk):
-    coleta = Coleta.objects.get(pk=pk)
+    coleta = Coleta.objects.get(id=pk)
     informacoes = {
         'coleta': coleta
     }
@@ -83,3 +83,37 @@ def criar_criacao(request):
         'form': form
     }
     return render(request, 'Producao/criar_criacao.html', informacoes)
+
+class CriarCriacao(CreateView):
+    model = Criacao
+    form_class = CriacaoForm
+    template_name = 'Producao/criar_criacao.html'
+    success_url = reverse_lazy('Producao:listar_coletar')
+
+def listar_criacoes(request):
+    lista_criacoes = Coleta.objects.all()
+
+    informacoes = {
+        'lista_criacoes': lista_criacoes
+    }
+
+    return render(request, 'Producao/listar_criacoes.html', informacoes)
+
+class ListarCriacoes(ListView):
+    model = Criacao
+    context_object_name = 'lista_criacoes'
+    template_name = 'Producao/listar_criacoes.html'
+
+def detalhar_criacoes(request, pk):
+    criacao = Criacao.objects.get(id=pk)
+
+    informacoes = {
+        'criacao': criacao
+    }
+
+    return render(request, 'Producao/detalhes_criacao.html', informacoes)
+
+class DetalharCriacoes(DetailView):
+    model = Criacao
+    context_object_name = 'criacao'
+    template_name = 'Producao/detalhes_criacao.html'
