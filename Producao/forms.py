@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.core.exceptions import ValidationError
-from Producao.models import Coleta
+from Producao.models import Coleta, Criacao
 
 class ColetaForm(ModelForm):
     class Meta:
@@ -15,3 +15,16 @@ class ColetaForm(ModelForm):
         quantidade = self.cleaned_data['quantidade']
 
         coletas_existentes = Coleta.objects.filter(criacao=criacao, data=data, quantidade=quantidade)
+
+class CriacaoForm(ModelForm):
+    class Meta:
+        model = Criacao
+        fields = ['raca', 'data_entrada']
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        raca = self.cleaned_data['raca']
+        data_entrada = self.cleaned_data['data_entrada']
+
+        Criacao.objects.filter(raca=raca, data_entrada=data_entrada)
