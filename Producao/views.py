@@ -29,3 +29,22 @@ def criar_coleta(request):
 
     return render(request, 'Producao/criar_produto.html', informacoes)
 
+class CriarColeta(CreateView):
+    model = Coleta
+    form_class = ColetaForm
+    template_name = 'Producao/criar_coleta.html'
+    success_url = reverse_lazy('Producao:listar_coletas')
+
+def listar_coletas(request):
+    lista_coletas = Coleta.objects.all()
+
+    informacoes = {
+        'lista_coletas': lista_coletas
+    }
+
+    return render(request, 'Producao/listar_coletas.html', informacoes)
+
+class ListarColetas(ListView):
+    model = Coleta
+    context_object_name = 'lista_coletas'
+    template_name = 'Producao/listar_coletas.html'

@@ -27,3 +27,7 @@ class ColetaViewTest(TestCase):
     def test_listar_coleta_all(self):
         response = self.client.get(reverse('Producao:listar_coletas'))
         self.assertEqual(len(response.context['listar_coletas']), 4)
+
+    def test_criar_coleta_redirect_login(self):
+        response = self.client.get(reverse('Producao:criar_coletas'))
+        self.assertRedirects(response, '/Producao/listar_coletas/?next=/produto/criar_coletas/')
