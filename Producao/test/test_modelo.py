@@ -16,7 +16,7 @@ class CriacaoModelTest(TestCase):
         criacao = Criacao.objects.get(id=1)
         raca = criacao._meta.get_field('raca')
         tamanho_max = criacao._meta.get_field('raca').max_length
-        self.assertTrue(len(raca) <= tamanho_max)
+        self.assertTrue(raca.max_length <= tamanho_max)
 
     def test_campos_obrigatorios(self):
         criacao = Criacao.objects.get(id=1)

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-#from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from Producao.models import Coleta, Criacao
 from Producao.forms import ColetaForm, CriacaoForm
@@ -64,6 +64,7 @@ class DetalharColeta(DetailView):
 
 # Views de Criação
 
+#@login_required
 def criar_criacao(request):
     if request.method == 'POST':
         form = CriacaoForm(request.POST)
