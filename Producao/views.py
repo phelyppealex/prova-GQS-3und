@@ -28,7 +28,7 @@ def criar_coleta(request):
     informacoes = {
         'form': form
     }
-    return render(request, 'Producao/criar_produto.html', informacoes)
+    return render(request, 'Producao/criar_coleta.html', informacoes)
 
 class CriarColeta(CreateView):
     model = Coleta
@@ -104,7 +104,7 @@ class ListarCriacoes(ListView):
     context_object_name = 'lista_criacoes'
     template_name = 'Producao/listar_criacoes.html'
 
-def detalhar_criacoes(request, pk):
+def detalhar_criacao(request, pk):
     criacao = Criacao.objects.get(id=pk)
 
     informacoes = {
@@ -113,7 +113,7 @@ def detalhar_criacoes(request, pk):
 
     return render(request, 'Producao/detalhes_criacao.html', informacoes)
 
-class DetalharCriacoes(DetailView):
+class DetalharCriacao(DetailView):
     model = Criacao
     context_object_name = 'criacao'
     template_name = 'Producao/detalhes_criacao.html'
