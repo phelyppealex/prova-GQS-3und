@@ -7,6 +7,9 @@ from Producao.forms import ColetaForm, CriacaoForm
 
 # Views de Coleta
 
+def home(request):
+    return render(request, 'Producao/index.html')
+
 #@login_required
 def criar_coleta(request):
     if request.method == 'POST':

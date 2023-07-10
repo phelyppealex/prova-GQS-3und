@@ -19,6 +19,8 @@ from django.urls import path
 from Producao import views
 
 urlpatterns = [
+    path('', views.home, name='inicio'),
+
     path('criar-coleta/', views.criar_coleta, name='criar_coleta'),
     path('criar-coleta-cbv/', views.CriarColeta.as_view(), name='criar_coleta_cbv'),
 
