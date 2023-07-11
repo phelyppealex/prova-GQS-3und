@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block tittle %}
+Lista de criações
+{% endblock %}
+
+{% block subtitulo %}
+Lista de criações
+{% endblock %}
+
+{% block conteudo %}
+    <table>
+        <tr>
+            <th colspan="2">Lista de criações</th>
+        </tr>
+        <tr>
+            <th>Raça</th>
+            <td>{{ criacao.raca }}</td>
+        </tr>
+        <tr>
+            <th>Data de entrada</th>
+            <td>{{ criacao.data_entrada }}</td>
+        </tr>
+    </table>
+{% endblock %}
