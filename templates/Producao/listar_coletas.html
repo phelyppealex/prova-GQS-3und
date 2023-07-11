@@ -14,12 +14,14 @@ Lista de coletas
             <th>Criação</th>
             <th>Data</th>
             <th>Quantidade</th>
+            <th>Opções</th>
         </tr>
         {% for coleta in lista_coletas %}
             <tr>
-                <td>{{ coleta.criacao }}</td>
+                <td>{{ coleta.criacao.raca }}</td>
                 <td>{{ coleta.data }}</td>
                 <td>{{ coleta.quantidade }}</td>
+                <td><a href="detalhes/{{ coleta.id }}">Detalhar</a></td>
             </tr>
         {% endfor %}
     </table>
