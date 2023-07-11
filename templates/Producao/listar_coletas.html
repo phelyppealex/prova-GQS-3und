@@ -9,14 +9,18 @@ Lista de coletas
 {% endblock %}
 
 {% block conteudo %}
-    <table>
+    <table border="1">
         <tr>
             <th>Criação</th>
             <th>Data</th>
             <th>Quantidade</th>
         </tr>
         {% for coleta in lista_coletas %}
-            {{ coleta }}
+            <tr>
+                <td>{{ coleta.criacao }}</td>
+                <td>{{ coleta.data }}</td>
+                <td>{{ coleta.quantidade }}</td>
+            </tr>
         {% endfor %}
     </table>
 {% endblock %}

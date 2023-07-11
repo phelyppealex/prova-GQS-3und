@@ -25,7 +25,13 @@ def criar_coleta(request):
                 quantidade=quantidade
             )
 
-            return redirect(reverse('listar_coletas'))
+            lista_coletas = Coleta.objects.all()
+
+            informacoes = {
+                'lista_coletas': lista_coletas
+            }
+
+            return render(request, 'Producao/listar_coletas.html', informacoes)
     else:
         form = ColetaForm()
     
@@ -66,9 +72,8 @@ class DetalharColeta(DetailView):
     context_object_name = 'coleta'
     template_name = 'Producao/detalhes_coleta.html'
 
-# Views de Criação
+# Views de Criacao
 
-#@login_required
 def criar_criacao(request):
     if request.method == 'POST':
         form = CriacaoForm(request.POST)
@@ -80,7 +85,13 @@ def criar_criacao(request):
                 raca=raca,
                 data_entrada=data_entrada
             )
-            return redirect('producao:listar_criacoes')
+
+            lista_criacoes = Criacao.objects.all()
+
+            informacoes = {
+                'lista_criacoes': lista_criacoes
+            }
+            return render(request, 'Producao/listar_criacoes.html', informacoes)
     else:
         form = CriacaoForm()
 
