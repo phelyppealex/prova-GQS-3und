@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block tittle %}
+Lista de coletas
+{% endblock %}
+
+{% block subtitulo %}
+Lista de coletas
+{% endblock %}
+
+{% block conteudo %}
+    <table>
+        <tr>
+            <th>Criação</th>
+            <th>Data</th>
+            <th>Quantidade</th>
+        </tr>
+        {% for coleta in lista_coletas %}
+            {{ coleta }}
+        {% endfor %}
+    </table>
+{% endblock %}

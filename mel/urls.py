@@ -24,7 +24,7 @@ urlpatterns = [
     path('criar-coleta/', views.criar_coleta, name='criar_coleta'),
     path('criar-coleta-cbv/', views.CriarColeta.as_view(), name='criar_coleta_cbv'),
 
-    path('listar-coletas/', views.listar_coletas, name='listar-coletas'),
+    path('listar-coletas/', views.listar_coletas, name='listar_coletas'),
     path('listar-coletas-cbv/', views.ListarColetas.as_view(), name='listar_coletas_cbv'),
 
     path('detalhes-coleta/<int:pk>', views.detalhar_coleta, name='detalhes_coleta'),
@@ -33,7 +33,7 @@ urlpatterns = [
     path('criar-criacao/', views.criar_criacao, name='criar_criacao'),
     path('criar-criacao-cbv/', views.CriarCriacao.as_view(), name='criar_criacao_cbv'),
 
-    path('listar-criacoes/', views.listar_criacoes, name='listar-criacoes'),
+    path('listar-criacoes/', views.listar_criacoes, name='listar_criacoes'),
     path('listar-criacoes-cbv/', views.ListarCriacoes.as_view(), name='listar_criacoes_cbv'),
 
     path('detalhes-criacao/<int:pk>', views.detalhar_criacao, name='detalhes_criacao'),

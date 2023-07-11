@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from Producao.models import Coleta, Criacao
@@ -24,10 +24,11 @@ def criar_coleta(request):
                 data=data,
                 quantidade=quantidade
             )
-            return redirect('Producao:listar_coletas')
+
+            return redirect(reverse('listar_coletas'))
     else:
         form = ColetaForm()
-
+    
     informacoes = {
         'form': form
     }
@@ -37,7 +38,7 @@ class CriarColeta(CreateView):
     model = Coleta
     form_class = ColetaForm
     template_name = 'Producao/criar_coleta.html'
-    success_url = reverse_lazy('Producao:listar_coletas')
+    success_url = reverse_lazy('producao:listar_coletas')
 
 def listar_coletas(request):
     lista_coletas = Coleta.objects.all()
@@ -79,7 +80,7 @@ def criar_criacao(request):
                 raca=raca,
                 data_entrada=data_entrada
             )
-            return redirect('Producao:listar_criacoes')
+            return redirect('producao:listar_criacoes')
     else:
         form = CriacaoForm()
 
@@ -92,10 +93,10 @@ class CriarCriacao(CreateView):
     model = Criacao
     form_class = CriacaoForm
     template_name = 'Producao/criar_criacao.html'
-    success_url = reverse_lazy('Producao:listar_coletar')
+    success_url = reverse_lazy('producao:listar_criacoes')
 
 def listar_criacoes(request):
-    lista_criacoes = Coleta.objects.all()
+    lista_criacoes = Criacao.objects.all()
 
     informacoes = {
         'lista_criacoes': lista_criacoes

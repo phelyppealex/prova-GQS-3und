@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block tittle %}
+Lista de coletas
+{% endblock %}
+
+{% block subtitulo %}
+Lista de coletas
+{% endblock %}
+
+{% block conteudo %}
+    <table>
+        <tr>
+            <th>Raça</th>
+            <th>Data de entrada</th>
+        </tr>
+        {% for criacoes in lista_criacoes %}
+            <tr>
+                <td>{{criacoes.raca}}</td>
+                <td>{{criacoes.data_entrada}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
