@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, UpdateView, ListView, DetailView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from Producao.models import Coleta, Criacao
 from Producao.forms import ColetaForm, CriacaoForm
 
@@ -52,7 +52,6 @@ def listar_coletas(request):
     informacoes = {
         'lista_coletas': lista_coletas
     }
-
     return render(request, 'Producao/listar_coletas.html', informacoes)
 
 class ListarColetas(ListView):
@@ -71,6 +70,16 @@ class DetalharColeta(DetailView):
     model = Coleta
     context_object_name = 'coleta'
     template_name = 'Producao/detalhes_coleta.html'
+
+def deletar_coleta(request, pk):
+    coleta = Coleta.objects.get(id=pk)
+    coleta.delete()
+    return redirect('/listar-coletas')
+
+class DeletarColeta(DeleteView):
+    model = Coleta
+    context_object_name = 'lista_coletas'
+    template_name = 'Producao/listar_coletas.html'
 
 # Views de Criação
 
@@ -133,3 +142,13 @@ class DetalharCriacao(DetailView):
     model = Criacao
     context_object_name = 'criacao'
     template_name = 'Producao/detalhes_criacao.html'
+
+def deletar_criacao(request, pk):
+    criacao = Criacao.objects.get(id=pk)
+    criacao.delete()
+    return redirect('/listar-criacoes')
+
+class DeletarCriacao(DeleteView):
+    model = Criacao
+    context_object_name = 'lista_criacoes'
+    template_name = 'Producao/listar_criacoes.html'

@@ -10,16 +10,16 @@ Lista de criações
 
 {% block conteudo %}
     <div class="tabela">
-        {% for criacoes in lista_criacoes %}
+        {% for criacao in lista_criacoes %}
         <div class="linha">
             <div class="coluna">
-                <b>Raca:</b> {{criacoes.raca}}
+                <b>Raca:</b> {{criacao.raca}}
             </div>
             <div class="coluna">
-                <b>Data de entrada:</b> {{criacoes.data_entrada}}
+                <b>Data de entrada:</b> {{criacao.data_entrada}}
             </div>
             <div class="coluna">
-                <b>Ações:</b> <a href="detalhes/{{ criacoes.id }}">Detalhar</a>
+                <b>Ações:</b> <a href="detalhes/{{ criacao.id }}">Detalhar</a> <a href="deletar/{{ criacao.id }}">Deletar</a>
             </div>
         </div>
         {% endfor %}
