@@ -44,5 +44,5 @@ urlpatterns = [
     path('listar-criacoes/detalhes-cbv/<int:pk>', views.DetalharCriacao.as_view(), name='detalhes_criacao-cbv'),
 
     path('listar-criacoes/deletar/<int:pk>', views.deletar_criacao, name='deletar_criacao'),
-path('listar-criacoes/deletar/<int:pk>', views.DeletarCriacao.as_view(), name='detalhes_criacao_cbv'),
+    path('listar-criacoes/deletar/<int:pk>', views.DeletarCriacao.as_view(), name='detalhes_criacao_cbv'),
 ]
