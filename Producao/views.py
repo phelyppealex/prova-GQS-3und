@@ -72,7 +72,7 @@ class DetalharColeta(DetailView):
     context_object_name = 'coleta'
     template_name = 'Producao/detalhes_coleta.html'
 
-# Views de Criacao
+# Views de Criação
 
 def criar_criacao(request):
     if request.method == 'POST':

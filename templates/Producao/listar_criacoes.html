@@ -5,22 +5,23 @@ Lista de coletas
 {% endblock %}
 
 {% block subtitulo %}
-Lista de coletas
+Lista de criações
 {% endblock %}
 
 {% block conteudo %}
-    <table>
-        <tr>
-            <th>Raça</th>
-            <th>Data de entrada</th>
-            <th>Opções</th>
-        </tr>
+    <div class="tabela">
         {% for criacoes in lista_criacoes %}
-            <tr>
-                <td>{{criacoes.raca}}</td>
-                <td>{{criacoes.data_entrada}}</td>
-                <td><a href="detalhes/{{ criacoes.id }}">Detalhar</a></td>
-            </tr>
+        <div class="linha">
+            <div class="coluna">
+                <b>Raca:</b> {{criacoes.raca}}
+            </div>
+            <div class="coluna">
+                <b>Data de entrada:</b> {{criacoes.data_entrada}}
+            </div>
+            <div class="coluna">
+                <b>Ações:</b> <a href="detalhes/{{ criacoes.id }}">Detalhar</a>
+            </div>
+        </div>
         {% endfor %}
-    </table>
+    </div>
 {% endblock %}

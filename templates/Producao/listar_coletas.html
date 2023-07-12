@@ -9,20 +9,22 @@ Lista de coletas
 {% endblock %}
 
 {% block conteudo %}
-    <table>
-        <tr>
-            <th>Criação</th>
-            <th>Data</th>
-            <th>Quantidade</th>
-            <th>Opções</th>
-        </tr>
+    <div class="tabela">
         {% for coleta in lista_coletas %}
-            <tr>
-                <td>{{ coleta.criacao.raca }}</td>
-                <td>{{ coleta.data }}</td>
-                <td>{{ coleta.quantidade }}</td>
-                <td><a href="detalhes/{{ coleta.id }}">Detalhar</a></td>
-            </tr>
+        <div class="linha">
+            <div class="coluna">
+                <b>Raça:</b> {{ coleta.criacao.raca }}
+            </div>
+            <div class="coluna">
+                <b>Data:</b> {{ coleta.data }}
+            </div>
+            <div class="coluna">
+                <b>Coleta:</b> {{ coleta.quantidade }}
+            </div>
+            <div class="coluna">
+                <b>Ações</b> <a href="detalhes/{{ coleta.id }}">Detalhar</a>
+            </div>
+        </div>
         {% endfor %}
-    </table>
+    </div>
 {% endblock %}
