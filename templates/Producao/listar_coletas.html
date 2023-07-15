@@ -22,7 +22,7 @@ Lista de coletas
                 <b>Coleta:</b> {{ coleta.quantidade }}
             </div>
             <div class="coluna">
-                <b>Ações</b> <a href="detalhes/{{ coleta.id }}">Detalhar</a> <a href="deletar/{{ coleta.id }}">Deletar</a>
+                <b>Ações</b> <a href="/detalhes-coleta/{{ coleta.id }}">Detalhar</a> <a href="/deletar-coleta/{{ coleta.id }}">Deletar</a>
             </div>
         </div>
         {% endfor %}

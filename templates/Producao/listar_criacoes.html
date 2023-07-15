@@ -13,13 +13,13 @@ Lista de criações
         {% for criacao in lista_criacoes %}
         <div class="linha">
             <div class="coluna">
-                <b>Raca:</b> {{criacao.raca}}
+                <b>Raça:</b> {{criacao.raca}}
             </div>
             <div class="coluna">
                 <b>Data de entrada:</b> {{criacao.data_entrada}}
             </div>
             <div class="coluna">
-                <b>Ações:</b> <a href="detalhes/{{ criacao.id }}">Detalhar</a> <a href="deletar/{{ criacao.id }}">Deletar</a>
+                <b>Ações:</b> <a href="/detalhes-criacao/{{ criacao.id }}">Detalhar</a> <a href="/deletar-criacao/{{ criacao.id }}">Deletar</a>
             </div>
         </div>
         {% endfor %}
