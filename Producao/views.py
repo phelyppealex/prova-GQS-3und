@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
-from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from Producao.models import Coleta, Criacao
 from Producao.forms import ColetaForm, CriacaoForm
@@ -10,7 +9,6 @@ from Producao.forms import ColetaForm, CriacaoForm
 def home(request):
     return render(request, 'Producao/index.html')
 
-#@login_required
 def criar_coleta(request):
     if request.method == 'POST':
         form = ColetaForm(request.POST)
@@ -32,9 +30,9 @@ def criar_coleta(request):
             }
 
             return render(request, 'Producao/listar_coletas.html', informacoes)
-    else:
-        form = ColetaForm()
-    
+        
+    form = ColetaForm()
+
     informacoes = {
         'form': form
     }
@@ -101,8 +99,8 @@ def criar_criacao(request):
                 'lista_criacoes': lista_criacoes
             }
             return render(request, 'Producao/listar_criacoes.html', informacoes)
-    else:
-        form = CriacaoForm()
+    
+    form = CriacaoForm()
 
     informacoes = {
         'form': form
@@ -152,3 +150,15 @@ class DeletarCriacao(DeleteView):
     model = Criacao
     context_object_name = 'lista_criacoes'
     template_name = 'Producao/listar_criacoes.html'
+
+def editar_criacao(request, pk):
+    criacao = Criacao.objects.get(id=pk)
+    if request.method == 'POST':
+        form = CriacaoForm(request.POST, instance=criacao)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/detalhes-criacao/{pk}')
+    else:
+        form = CriacaoForm(instance=criacao)
+
+    return render(request, 'Producao/criar_criacao.html', {'form': form})
