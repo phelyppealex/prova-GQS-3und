@@ -34,8 +34,10 @@ def criar_coleta(request):
     form = ColetaForm()
 
     informacoes = {
-        'form': form
+        'form': form,
+        'operacao': 'Criar'
     }
+
     return render(request, 'Producao/criar_coleta.html', informacoes)
 
 class CriarColeta(CreateView):
@@ -79,6 +81,24 @@ class DeletarColeta(DeleteView):
     context_object_name = 'lista_coletas'
     template_name = 'Producao/listar_coletas.html'
 
+def editar_coleta(request, pk):
+    coleta = Coleta.objects.get(id=pk)
+    if request.method == 'POST':
+        form = ColetaForm(request.POST, instance=coleta)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/detalhes-coleta/{pk}')
+    else:
+        form = ColetaForm(instance=coleta)
+
+    informacoes = {
+        'form': form,
+        'operacao': 'Editar'
+    }
+
+    return render(request, 'Producao/criar_coleta.html', informacoes)
+
+
 # Views de Criação
 
 def criar_criacao(request):
@@ -103,8 +123,10 @@ def criar_criacao(request):
     form = CriacaoForm()
 
     informacoes = {
-        'form': form
+        'form': form,
+        'operacao': 'Criar'
     }
+
     return render(request, 'Producao/criar_criacao.html', informacoes)
 
 class CriarCriacao(CreateView):
@@ -161,4 +183,9 @@ def editar_criacao(request, pk):
     else:
         form = CriacaoForm(instance=criacao)
 
-    return render(request, 'Producao/criar_criacao.html', {'form': form})
+    informacoes = {
+        'form': form,
+        'operacao': 'Editar'
+    }
+
+    return render(request, 'Producao/criar_criacao.html', informacoes)

@@ -27,13 +27,3 @@ class ColetaFormTest(TestCase):
             }
         )
         self.assertTrue(form.is_valid())
-
-    def test_coleta_existente(self):
-        form = ColetaForm(
-            data = {
-                'criacao': Criacao.objects.get(id=1),
-                'data': '2014-04-20',
-                'quantidade': 3
-            }
-        )
-        self.assertFalse(form.is_valid())

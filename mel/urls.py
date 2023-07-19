@@ -19,6 +19,8 @@ from django.conf.urls.static import static
 from django.urls import path
 from Producao import views
 
+app_name = 'Producao'
+
 urlpatterns = [
     path('', views.home, name='inicio'),
 
@@ -46,5 +48,6 @@ urlpatterns = [
     path('deletar-criacao/<int:pk>', views.deletar_criacao, name='deletar_criacao'),
     path('listar-criacoes/deletar/<int:pk>', views.DeletarCriacao.as_view(), name='detalhes_criacao_cbv'),
 
-    path('editar-criacao/<int:pk>', views.editar_criacao, name='detalhes_criacao'),
+    path('editar-criacao/<int:pk>', views.editar_criacao, name='editar_criacao'),
+    path('editar-coleta/<int:pk>', views.editar_coleta, name='editar_coleta'),
 ]
